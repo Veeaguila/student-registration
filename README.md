@@ -90,7 +90,7 @@ The Student Registration System follows the Laravel request lifecycle when a stu
 
 ### Request Lifecycle Diagram
 
-<img src="documentation/request-lifecycle.drawio.png" alt="Laravel Request Lifecycle" width="800">
+<img src="documentation/request-lifecycle.drawio.png" alt="Laravel Request Lifecycle" width="400">
 
 ---
 
@@ -131,7 +131,7 @@ The database structure was created using a Laravel migration. The table contains
 
 The Student Registration System currently uses one main entity, the `students` table.
 
-<img src="documentation/ERD.png" alt="Student Registration System ERD" width="800">
+<img src="documentation/ERD.png" alt="Student Registration System ERD" width="400">
 
 ### ERD Description
 
@@ -284,7 +284,7 @@ This migration allows the database structure to be created consistently using La
 
 The following screenshot shows the registered student record stored in the MySQL `students` table.
 
-<img src="screenshots/06-database-records.png" alt="Database Records" width="800">
+<img src="screenshots/06-database-records.png" alt="Database Records" width="400">
 
 ---
 
@@ -294,7 +294,7 @@ The registration process follows this workflow:
 
 ### Registration Flowchart Diagram
 
-<img src="documentation/student_reg_flowchart.drawio.png" alt="Student Registration Flowchart" width="800">
+<img src="documentation/student_reg_flowchart.drawio.png" alt="Student Registration Flowchart" width="400">
 
 ---
 
@@ -306,7 +306,7 @@ The following screenshots document the main features and development process of 
 
 The registration form allows the user to enter the student's personal, contact, and academic information.
 
-<img src="screenshots/01-registration-form.png" alt="Registration Form" width="800">
+<img src="screenshots/01-registration-form.png" alt="Registration Form" width="400">
 
 ---
 
@@ -314,7 +314,7 @@ The registration form allows the user to enter the student's personal, contact, 
 
 This screenshot shows the validation errors displayed when required or invalid information is submitted.
 
-<img src="screenshots/02-validation-errors.png" alt="Validation Errors" width="800">
+<img src="screenshots/02-validation-errors.png" alt="Validation Errors" width="400">
 
 ---
 
@@ -322,7 +322,7 @@ This screenshot shows the validation errors displayed when required or invalid i
 
 This screenshot shows the success message displayed after successfully registering a student.
 
-<img src="screenshots/03-flash-success.png" alt="Flash Success Message" width="800">
+<img src="screenshots/03-flash-success.png" alt="Flash Success Message" width="400">
 
 ---
 
@@ -330,9 +330,9 @@ This screenshot shows the success message displayed after successfully registeri
 
 This screenshot demonstrates the profile picture upload functionality.
 
-<img src="screenshots/04-uploaded-image.png" alt="Uploaded Profile Picture" width="800">
+<img src="screenshots/04-uploaded-image.png" alt="Uploaded Profile Picture" width="400">
 
-<img src="screenshots/04-uploaded-image2.png" alt="Uploaded Profile Picture" width="800">
+<img src="screenshots/04-uploaded-image2.png" alt="Uploaded Profile Picture" width="400">
 
 ---
 
@@ -340,7 +340,7 @@ This screenshot demonstrates the profile picture upload functionality.
 
 This screenshot shows the registered student's profile and information.
 
-<img src="screenshots/05-student-profile.png" alt="Student Profile" width="800">
+<img src="screenshots/05-student-profile.png" alt="Student Profile" width="400">
 
 ---
 
@@ -348,7 +348,7 @@ This screenshot shows the registered student's profile and information.
 
 This screenshot shows the registered student record stored in the MySQL `students` table.
 
-<img src="screenshots/06-database-records.png" alt="Database Records" width="800">
+<img src="screenshots/06-database-records.png" alt="Database Records" width="400">
 
 ---
 
@@ -356,11 +356,11 @@ This screenshot shows the registered student record stored in the MySQL `student
 
 This screenshot shows the Laravel project structure, including the main application folders and files.
 
-<img src="screenshots/07-project-structure.png" alt="Laravel Project Structure" width="800">
+<img src="screenshots/07-project-structure.png" alt="Laravel Project Structure" width="400">
 
-<img src="screenshots/07-project-structure2.png" alt="Laravel Project Structure" width="800">
+<img src="screenshots/07-project-structure2.png" alt="Laravel Project Structure" width="400">
 
-<img src="screenshots/07-project-structure3.png" alt="Laravel Project Structure" width="800">
+<img src="screenshots/07-project-structure3.png" alt="Laravel Project Structure" width="400">
 
 ---
 
@@ -368,7 +368,7 @@ This screenshot shows the Laravel project structure, including the main applicat
 
 This screenshot shows the Student Registration System repository on GitHub.
 
-<img src="screenshots/08-github-repository.png" alt="GitHub Repository" width="800">
+<img src="screenshots/08-github-repository.png" alt="GitHub Repository" width="400">
 
 ---
 
@@ -376,7 +376,7 @@ This screenshot shows the Student Registration System repository on GitHub.
 
 This screenshot shows the Laravel Artisan commands and successful terminal output used during development and testing.
 
-<img src="screenshots/09-terminal-output.png" alt="Terminal Output" width="800">
+<img src="screenshots/09-terminal-output.png" alt="Terminal Output" width="400">
 
 ---
 
@@ -384,7 +384,7 @@ This screenshot shows the Laravel Artisan commands and successful terminal outpu
 
 This screenshot shows the completed Student Registration System running in the browser.
 
-<img src="screenshots/10-browser-output.png" alt="Browser Output" width="800">
+<img src="screenshots/10-browser-output.png" alt="Browser Output" width="400">
 
 ---
 
