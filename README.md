@@ -90,7 +90,7 @@ The Student Registration System follows the Laravel request lifecycle when a stu
 
 ### Request Lifecycle Diagram
 
-<img src="documentation/request-lifecycle.png" alt="Laravel Request Lifecycle" width="800">
+<img src="documentation/request-lifecycle.drawio.png" alt="Laravel Request Lifecycle" width="800">
 
 ---
 
@@ -294,7 +294,7 @@ The registration process follows this workflow:
 
 ### Registration Flowchart Diagram
 
-<img src="screenshots/student_reg_flowchart.png" alt="Student Registration Flowchart" width="800">
+<img src="documentation/student_reg_flowchart.drawio.png" alt="Student Registration Flowchart" width="800">
 
 ---
 
