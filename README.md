@@ -294,7 +294,7 @@ The registration process follows this workflow:
 
 ### Registration Flowchart Diagram
 
-<img src="documentation/student_reg_flowchart.png" alt="Student Registration Flowchart" width="800">
+<img src="screenshots/student_reg_flowchart.png" alt="Student Registration Flowchart" width="800">
 
 ---
 
