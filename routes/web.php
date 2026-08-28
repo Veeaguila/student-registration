@@ -7,6 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/students', [StudentController::class, 'index'])
+    ->name('students.index');
+
 Route::get('/students/register', [StudentController::class, 'create'])
     ->name('students.create');
 

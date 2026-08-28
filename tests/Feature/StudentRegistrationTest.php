@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\Student;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class StudentRegistrationTest extends TestCase
@@ -12,6 +12,8 @@ class StudentRegistrationTest extends TestCase
 
     public function test_student_can_register(): void
     {
+        $profilePicture = UploadedFile::fake()->image('profile.jpg');
+
         $response = $this->post('/students/register', [
             'student_id' => 'TEST-0001',
             'first_name' => 'Juan',
@@ -24,6 +26,7 @@ class StudentRegistrationTest extends TestCase
             'program' => 'BS Information Technology',
             'year_level' => '1st Year',
             'address' => 'Manila, Philippines',
+            'profile_picture' => $profilePicture,
         ]);
 
         $response->assertRedirect();
