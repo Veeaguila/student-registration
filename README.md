@@ -1,15 +1,14 @@
-<p align="center">
-<a href="https://laravel.com" target="_blank">
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-</a>
-</p>
 
 <p align="center">
+
 <strong>Student Registration System</strong>
+
 </p>
 
 <p align="center">
+
 Laravel • MySQL • Blade • Eloquent ORM
+
 </p>
 
 ---
@@ -124,50 +123,139 @@ The system checks important information before registration is completed. Unique
 
 # 6. Database Design
 
-The Student Registration System uses **MySQL** as its database.
+The Student Registration System uses a MySQL database to store student registration information. The main table used by the system is the `students` table.
 
-The main database table is called:
+The database structure was created using a Laravel migration. The table contains student personal information, contact information, academic information, and the profile picture path.
+
+## 6.1 Entity Relationship Diagram (ERD)
+
+The Student Registration System currently uses one main entity, the `students` table.
+
+<img src="documentation/ERD.png" alt="Student Registration System ERD" width="800">
+
+### ERD Description
+
+The `students` table contains all information required for a student registration record. Each student has a unique `id` as the primary key. The `student_id` and `email` fields are also unique to prevent duplicate student registrations.
+
+---
+
+## 6.2 Students Table Structure
+
+| Column            | Data Type    | Key         | Constraints      | Description                          |
+| ----------------- | ------------ | ----------- | ---------------- | ------------------------------------ |
+| `id`              | BIGINT       | Primary Key | Auto Increment   | Unique database identifier           |
+| `student_id`      | VARCHAR(255) | Unique      | Required, Unique | Student identification number        |
+| `first_name`      | VARCHAR(255) | —           | Required         | Student's first name                 |
+| `middle_name`     | VARCHAR(255) | —           | Nullable         | Student's middle name                |
+| `last_name`       | VARCHAR(255) | —           | Required         | Student's last name                  |
+| `email`           | VARCHAR(255) | Unique      | Required, Unique | Student's email address              |
+| `mobile_number`   | VARCHAR(255) | —           | Required         | Student's mobile number              |
+| `date_of_birth`   | DATE         | —           | Required         | Student's date of birth              |
+| `gender`          | VARCHAR(255) | —           | Required         | Student's gender                     |
+| `program`         | VARCHAR(255) | —           | Required         | Student's academic program           |
+| `year_level`      | VARCHAR(255) | —           | Required         | Student's year level                 |
+| `address`         | TEXT         | —           | Required         | Student's address                    |
+| `profile_picture` | VARCHAR(255) | —           | Nullable         | Path of uploaded profile picture     |
+| `created_at`      | TIMESTAMP    | —           | Nullable         | Date and time the record was created |
+| `updated_at`      | TIMESTAMP    | —           | Nullable         | Date and time the record was updated |
+
+---
+
+## 6.3 Data Types
+
+The Laravel migration defines the following data types:
+
+* `id` uses Laravel's `$table->id()` and serves as the BIGINT primary key.
+* `student_id` uses `string`, which creates a VARCHAR column.
+* `first_name` uses `string`, which creates a VARCHAR column.
+* `middle_name` uses `string` and is nullable.
+* `last_name` uses `string`, which creates a VARCHAR column.
+* `email` uses `string`, which creates a VARCHAR column.
+* `mobile_number` uses `string`, which creates a VARCHAR column.
+* `date_of_birth` uses `date`, which creates a DATE column.
+* `gender` uses `string`, which creates a VARCHAR column.
+* `program` uses `string`, which creates a VARCHAR column.
+* `year_level` uses `string`, which creates a VARCHAR column.
+* `address` uses `text`, which creates a TEXT column.
+* `profile_picture` uses `string` and is nullable.
+* `created_at` and `updated_at` are created automatically using Laravel's `$table->timestamps()`.
+
+---
+
+## 6.4 Primary Key
+
+The primary key of the `students` table is:
 
 ```text
-students
+id
 ```
 
-## Students Table
+It is created using:
 
-| Column            | Description                          |
-| ----------------- | ------------------------------------ |
-| `id`              | Primary key                          |
-| `student_id`      | Unique student identification number |
-| `first_name`      | Student's first name                 |
-| `middle_name`     | Student's middle name                |
-| `last_name`       | Student's last name                  |
-| `email`           | Unique student email address         |
-| `mobile_number`   | Student's mobile number              |
-| `date_of_birth`   | Student's date of birth              |
-| `gender`          | Student's gender                     |
-| `program`         | Student's academic program           |
-| `year_level`      | Student's year level                 |
-| `address`         | Student's address                    |
-| `profile_picture` | Stored profile picture path          |
-| `created_at`      | Record creation timestamp            |
-| `updated_at`      | Record update timestamp              |
+```php
+$table->id();
+```
 
-## Database Constraints
+The primary key uniquely identifies each student record in the database.
 
-The database migration uses the following constraints:
+---
 
-* `id` is the primary key.
-* `student_id` is unique.
-* `email` is unique.
-* `middle_name` can be null.
-* `profile_picture` can be null.
-* Laravel timestamps are included using `$table->timestamps()`.
+## 6.5 Constraints
 
-## Database Migration
+The database uses several constraints to maintain data integrity.
 
-The `students` table is created using a Laravel migration.
+### Unique Student ID
 
-Example migration structure:
+```php
+$table->string('student_id')->unique();
+```
+
+The `student_id` field must be unique. This prevents multiple student records from having the same Student ID.
+
+### Unique Email
+
+```php
+$table->string('email')->unique();
+```
+
+The `email` field must also be unique. This prevents the same email address from being registered multiple times.
+
+### Nullable Middle Name
+
+```php
+$table->string('middle_name')->nullable();
+```
+
+The middle name is optional, so the database allows this field to contain a NULL value.
+
+### Nullable Profile Picture
+
+```php
+$table->string('profile_picture')->nullable();
+```
+
+The profile picture path can be NULL when a profile picture has not been stored.
+
+### Required Fields
+
+The following fields are not marked as nullable in the migration and therefore are required at the database level:
+
+* `student_id`
+* `first_name`
+* `last_name`
+* `email`
+* `mobile_number`
+* `date_of_birth`
+* `gender`
+* `program`
+* `year_level`
+* `address`
+
+---
+
+## 6.6 Laravel Migration
+
+The `students` table is created using the following Laravel migration:
 
 ```php
 Schema::create('students', function (Blueprint $table) {
@@ -188,9 +276,15 @@ Schema::create('students', function (Blueprint $table) {
 });
 ```
 
-## Entity Relationship Diagram
+This migration allows the database structure to be created consistently using Laravel Artisan.
 
-<img src="documentation/ERD.png" alt="Entity Relationship Diagram" width="800">
+---
+
+## 6.7 Database Screenshot
+
+The following screenshot shows the registered student record stored in the MySQL `students` table.
+
+<img src="screenshots/06-database-records.png" alt="Database Records" width="800">
 
 ---
 
@@ -237,7 +331,9 @@ This screenshot shows the success message displayed after successfully registeri
 This screenshot demonstrates the profile picture upload functionality.
 
 <img src="screenshots/04-uploaded-image.png" alt="Uploaded Profile Picture" width="800">
+
 <img src="screenshots/04-uploaded-image2.png" alt="Uploaded Profile Picture" width="800">
+
 ---
 
 ## 8.5 Student Profile
@@ -261,8 +357,11 @@ This screenshot shows the registered student record stored in the MySQL `student
 This screenshot shows the Laravel project structure, including the main application folders and files.
 
 <img src="screenshots/07-project-structure.png" alt="Laravel Project Structure" width="800">
+
 <img src="screenshots/07-project-structure2.png" alt="Laravel Project Structure" width="800">
+
 <img src="screenshots/07-project-structure3.png" alt="Laravel Project Structure" width="800">
+
 ---
 
 ## 8.8 GitHub Repository
@@ -350,90 +449,9 @@ Overall, this activity provided me with practical experience in Laravel developm
 # 12. References
 
 * Laravel. (n.d.). *Laravel documentation*. https://laravel.com/docs
+
 * PHP Documentation Group. (n.d.). *PHP manual*. https://www.php.net/docs.php
+
 * Oracle. (n.d.). *MySQL documentation*. https://dev.mysql.com/doc/
+
 * MDN Web Docs. (n.d.). *MDN Web Docs*. https://developer.mozilla.org/
-
----
-
-# Project Structure
-
-```text
-student-registration/
-│
-├── app/
-│   ├── Http/
-│   │   └── Controllers/
-│   │       └── StudentController.php
-│   │
-│   └── Models/
-│       └── Student.php
-│
-├── database/
-│   └── migrations/
-│       └── xxxx_xx_xx_create_students_table.php
-│
-├── documentation/
-│   ├── ERD.png
-│   ├── registration-flowchart.png
-│   └── request-lifecycle.png
-│
-├── resources/
-│   └── views/
-│       └── students/
-│           ├── index.php
-│           ├── profile.blade.php
-│           └── register.blade.php
-│
-├── routes/
-│   └── web.php
-│
-├── screenshots/
-│   ├── 01-registration-form.png
-│   ├── 02-validation-errors.png
-│   ├── 03-flash-success.png
-│   ├── 04-uploaded-image.png
-│   ├── 04-uploaded-image2.png
-│   ├── 05-student-profile.png
-│   ├── 06-database-records.png
-│   ├── 07-project-structure.png
-│   ├── 07-project-structure2.png
-│   └── 07-project-structure3.png
-│   ├── 06-database-records.png
-│   ├── 08-github-repository.png
-│   ├── 09-terminal-output.png
-│   └── 10-browser-output.png
-│
-├── tests/
-│
-├── README.md
-├── artisan
-├── composer.json
-└── package.json
-```
-
----
-
-# Project Information
-
-**Course:** ITST 302 – Client-Server Technologies
-
-**Section:** BSIT - 2C
-
-**Activity:** Week 4 Laboratory Activity
-
-**Project:** Student Registration System
-
-**Framework:** Laravel
-
-**Database:** MySQL
-
-**Frontend:** Blade, HTML, CSS
-
-**ORM:** Laravel Eloquent
-
-**Storage:** Laravel Storage
-
-**Version Control:** Git and GitHub
-
----
